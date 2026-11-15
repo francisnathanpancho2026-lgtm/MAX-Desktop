@@ -3,12 +3,18 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+
+permissions:
+  contents: write
+
 jobs:
   build-windows:
     runs-on: windows-latest
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -17,9 +23,13 @@ jobs:
         run: npm install
       - name: Build Windows installer
         run: npm run build:win
-      - name: Upload installer
-        uses: actions/upload-artifact@v4
-        with:
-          name: MAX-Windows-Installer
-          path: release/*.exe
-          if-no-files-found: error
+      - name: Put installer in repository artifacts folder
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path artifacts | Out-Null
+          Copy-Item release/*.exe artifacts/MAX-Setup-0.1.0.exe -Force
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f artifacts/MAX-Setup-0.1.0.exe
+          git commit -m "Add Windows installer to artifacts"
+          git push origin HEAD:main
