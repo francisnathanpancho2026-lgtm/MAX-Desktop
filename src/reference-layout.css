@@ -40,3 +40,27 @@
 @media (max-width:1150px) {
   .orb-stage .orb { top:48px; }
 }
+
+/* Match the reference navigation order while keeping every existing destination reachable. */
+@media (min-width: 1151px) {
+  .nav-scroll { display:flex; flex-direction:column; overflow:auto; }
+  .nav-group { display:contents; }
+  .nav-item { order:50; }
+  .nav-group:nth-child(1) .nav-item:nth-child(1) { order:1; }
+  .nav-group:nth-child(1) .nav-item:nth-child(3) { order:2; }
+  .nav-group:nth-child(1) .nav-item:nth-child(4) { order:3; }
+  .nav-group:nth-child(2) .nav-item:nth-child(6) { order:4; }
+  .nav-group:nth-child(1) .nav-item:nth-child(6) { order:5; }
+  .nav-group:nth-child(2) .nav-item:nth-child(3) { order:6; }
+  .nav-group:nth-child(3) .nav-item:nth-child(3) { order:7; }
+  .nav-scroll::after { content:""; order:8; flex:0 0 1px; height:1px; margin:0 12px 4px 80px; background:#123d66; }
+  .nav-group:nth-child(3) .nav-item:nth-child(1) { order:9; }
+  .nav-group:nth-child(3) .nav-item:nth-child(2) { order:10; }
+  .nav-group:nth-child(1) .nav-item:nth-child(2) { order:11; }
+  .nav-group:nth-child(1) .nav-item:nth-child(5) { order:12; }
+  .nav-group:nth-child(2) .nav-item:nth-child(1) { order:13; }
+  .nav-group:nth-child(2) .nav-item:nth-child(2) { order:14; }
+  .nav-group:nth-child(2) .nav-item:nth-child(4) { order:15; }
+  .nav-group:nth-child(2) .nav-item:nth-child(5) { order:16; }
+  .nav-group:nth-child(4) .nav-item { order:17; }
+}
