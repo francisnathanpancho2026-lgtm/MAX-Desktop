@@ -64,3 +64,70 @@
   .nav-group:nth-child(2) .nav-item:nth-child(5) { order:16; }
   .nav-group:nth-child(4) .nav-item { order:17; }
 }
+
+
+/* Glass-shell detail pass: add the layered optical structure visible in the supplied orb. */
+@media (min-width: 1151px) {
+  .orb-stage .orb {
+    overflow: visible;
+    background:
+      radial-gradient(ellipse 33% 18% at 31% 31%, rgba(84,190,255,.48), transparent 80%),
+      radial-gradient(ellipse 26% 34% at 76% 22%, rgba(39,133,255,.25), transparent 82%),
+      radial-gradient(ellipse 38% 24% at 25% 78%, rgba(22,113,222,.34), transparent 80%),
+      radial-gradient(ellipse at 48% 47%, #01040d 0 43%, #020b1c 57%, #071b3c 72%, #0a4c91 86%, #020b1b 100%);
+    border: 2px solid #5bcaff;
+    box-shadow:
+      inset -30px -28px 52px rgba(0,0,0,.95),
+      inset 13px 8px 30px rgba(105,205,255,.35),
+      inset 0 0 22px rgba(0,112,255,.3),
+      0 0 10px #29baff,
+      0 0 38px rgba(0,137,255,.8),
+      0 0 90px rgba(0,93,255,.45);
+  }
+  .orb-stage .orb::before {
+    inset: 7px;
+    border: 2px solid rgba(82,190,255,.72);
+    background:
+      repeating-conic-gradient(from 12deg, transparent 0deg 17deg, rgba(25,137,255,.28) 18deg 19deg, transparent 20deg 42deg);
+    -webkit-mask: radial-gradient(ellipse, transparent 0 53%, #000 55% 63%, transparent 66%);
+    mask: radial-gradient(ellipse, transparent 0 53%, #000 55% 63%, transparent 66%);
+    transform: rotate(25deg) scaleX(.91);
+    box-shadow: inset 0 0 28px rgba(16,136,255,.42), 0 0 14px rgba(0,143,255,.5);
+  }
+  .orb-stage .orb::after {
+    inset: 17px;
+    border: 1px solid rgba(36,147,255,.72);
+    background:
+      repeating-conic-gradient(from 196deg, transparent 0deg 24deg, rgba(18,128,255,.24) 25deg 26deg, transparent 27deg 55deg);
+    -webkit-mask: radial-gradient(ellipse, transparent 0 57%, #000 59% 64%, transparent 67%);
+    mask: radial-gradient(ellipse, transparent 0 57%, #000 59% 64%, transparent 67%);
+    transform: rotate(-35deg) scaleX(.79);
+  }
+  .orb-stage .orb-core {
+    color: #079dff;
+    text-shadow: 0 0 7px #008cff, 0 0 20px #007bff, 0 0 34px rgba(0,115,255,.7);
+    letter-spacing: 2.5px;
+  }
+  .orb-stage .orb-sweep {
+    left: -4%;
+    top: 51%;
+    width: 108%;
+    height: 62px;
+    border-top: 7px solid #13caff;
+    border-bottom: 3px solid #078dff;
+    border-radius: 50%;
+    transform: rotate(7deg);
+    box-shadow: 0 0 10px #00bfff, 0 0 24px #008cff, inset 0 7px 10px rgba(0,155,255,.16);
+  }
+  .orb-stage .orb-halo {
+    border-color: rgba(55,166,255,.62);
+    box-shadow: 0 0 25px rgba(7,138,255,.48), inset 0 0 30px rgba(7,138,255,.2);
+  }
+  .orb-stage .platform {
+    background: radial-gradient(ellipse at 50% 50%, rgba(0,205,255,.12), transparent 62%);
+  }
+  .orb-stage .platform::before,
+  .orb-stage .platform::after {
+    box-shadow: 0 0 10px #008cff, inset 0 0 8px rgba(0,125,255,.4);
+  }
+}
